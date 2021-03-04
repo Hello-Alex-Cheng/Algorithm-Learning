@@ -134,7 +134,9 @@ export class LinkedList {
     return this.count
   }
 
-  toString
+  toString() {
+    return JSON.stringify(this.head, null, 2)
+  }
 }
 
 // const linklist = new LinkedList()

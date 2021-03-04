@@ -46,6 +46,7 @@ class DoublyLinkedList extends LinkedList {
 
         this.tail = node
       } else {
+        // 将元素插入到第一个元素和最后一个元素的中间
         const previous = this.getElememtAt(index - 1)
         current = previous.next
         node.next = current
@@ -60,12 +61,46 @@ class DoublyLinkedList extends LinkedList {
 
     return false
   }
+
+  removeAt(index) {
+    if (index >= 0 && index < this.count) {
+      let current = this.head
+
+      if (index === 0) {
+        this.head = current.next
+
+        if (this.count === 1) {
+          this.tail = null
+        } else {
+          this.head.prev = null
+        }
+      } else if (index === this.count - 1) {
+        current = this.tail
+        this.tail = current.prev
+        this.tail.next = null
+      } else {
+        const previous = this.getElememtAt(index - 1)
+        current = previous.next // 要移除的元素
+        current.next.prev = previous
+        previous.next = current.next
+      }
+
+      this.count--
+
+      return current.element
+    }
+
+    return false
+  }
 }
 
 const dbLinkList = new DoublyLinkedList()
 
 dbLinkList.insert(1, 0)
-dbLinkList.insert(2, 0)
-dbLinkList.insert(3, 0)
+dbLinkList.insert(2, 1)
+dbLinkList.insert(3, 2)
+
+dbLinkList.removeAt(2)
 
 console.log(dbLinkList.head)
+// console.log(dbLinkList)

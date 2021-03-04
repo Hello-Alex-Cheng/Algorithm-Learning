@@ -1,0 +1,21 @@
+{
+  "name": "Algorithm-Learning",
+  "version": "1.0.0",
+  "description": "1. 算法学习，详细的算法解题思路，以及核心要点",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hello-Alex-Cheng/Algorithm-Learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hello-Alex-Cheng/Algorithm-Learning/issues"
+  },
+  "homepage": "https://github.com/Hello-Alex-Cheng/Algorithm-Learning#readme"
+}

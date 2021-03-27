@@ -45,3 +45,12 @@ this.tail.next => this.head
 }
 
 ```
+
+
+
+### leetcode 题
+
+- 剑指 Offer 06. 从尾到头打印链表
+
+- 剑指 Offer 18. 删除链表的节点
+

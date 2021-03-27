@@ -152,3 +152,8 @@ export class LinkedList {
 
 // console.log(linklist.getHead())
 // console.log(linklist.indexOf(3))
+
+
+var mergeTwoLists = function(l1, l2) {
+  let node = null
+}

@@ -82,6 +82,99 @@ export default class BinarySearchTree {
       cb(node.key)
     }
   }
+
+  // 获取最小值
+  min() {
+    return this.minNode(this.root)
+  }
+
+  minNode(node) {
+    let cur = node
+    // 如果 cur.left === null 表示当前节点就已经是最左侧的节点了。
+    while(cur !== null && cur.left !== null) {
+      cur = cur.left
+    }
+
+    return cur
+  }
+
+  max() {
+    return this.maxNode(this.root)
+  }
+
+  maxNode(node) {
+    let cur = node
+    while (cur !== null && cur.right !== null) {
+      cur = cur.right
+    }
+
+    return cur
+  }
+
+  // 搜索一个特定的值
+  search(key) {
+    return this.searchNode(this.root, key)
+  }
+
+  searchNode(node, key) {
+    if (node === null) return false
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // 表示值比根节点小
+      return this.searchNode(node.left, key)
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      // 表示比根节点大
+      return this.searchNode(node.right, key)
+    } else {
+      return node
+    }
+  }
+
+  remove(key) {
+    this.root = this.removeNode(this.root, key)
+  }
+
+  // 删除节点
+  removeNode(node, key) {
+    if (node === null) return null
+
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // 删除根节点左边的节点
+      // 当完成删除的操作后，返回最新的节点，假设删除了叶子节点，那么 node.left 就是 null 了
+      node.left = this.removeNode(node.left, key)
+      return node
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      node.right = this.removeNode(node.right, key)
+      return node
+    } else {
+      // 找到要删除的 node 了
+      // 第一种情况，删除的节点是 “叶子节点”
+      if (node.left === null && node.right === null) {
+        node = null
+        return node
+      }
+
+      // 第二种情况：删除的节点只有一个左侧或右侧子节点
+      if (node.left === null) {
+        // 表示要删除的节点只有一个右子节点，那就让右子节点直接代替这个要删除的节点即可，
+        node = node.right
+        return node
+      } else if (node.right === null) {
+        node = node.left
+        return node
+      }
+
+      // 第三种情况：删除的节点有两个子节点
+      // 四步骤:
+      // 1.首先要找到当前节点的右侧节点中最小的那个节点
+      // 2.用来替换当前要删除的节点
+      // 3.现在树中拥有了两个相同的key，然后删除掉右侧树中的最小节点
+      // 4.返回这个新的节点
+      const aux = this.minNode(node.right)
+      node.key = aux.key
+      node.right = this.removeNode(node.right, aux.key)
+      return node
+    }
+  }
 }
 
 const tree = new BinarySearchTree()
@@ -103,4 +196,19 @@ tree.insert(25)
 tree.insert(6)
 // tree.inOrderTraverse((key) => console.log(key))
 // tree.preOrderTraverse((key) => console.log(key))
-tree.postOrderTraverse((key) => console.log(key))
+// tree.postOrderTraverse((key) => console.log(key))
+
+// 最小值
+// console.log(tree.min())
+
+// // 最大值
+// console.log(tree.max())
+
+// // 搜索特定的值
+// console.log(tree.search(7))
+
+// tree.remove(3)
+tree.remove(9)
+console.log(tree.root.left)
+
+

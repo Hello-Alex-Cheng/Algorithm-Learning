@@ -6,11 +6,18 @@
 import { Compare, defaultCompare } from "../utils/index.js"
 import BinarySearchTree from './1.BinarySearchTree.js'
 
+// 节点的高度：节点的高度是从节点到任意子节点的边的最大值
+
 class AVLTree extends BinarySearchTree {
   constructor(compareFn = defaultCompare) {
     super(compareFn)
 
-    this.compareFn = compareFn
+    // 这里compareFn 继承了 BST 的 compareFn
+    // this.compareFn = compareFn
     this.root = null
   }
 }
+
+const avl = new AVLTree()
+
+console.log(avl.compareFn.toString())

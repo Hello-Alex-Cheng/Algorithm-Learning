@@ -1,6 +1,6 @@
 import { defaultToString } from "../utils/index.js"
 
-class ValuePair {
+export class ValuePair {
   constructor(key, value) {
     this.key = key
     this.value = value
@@ -106,4 +106,4 @@ d.set('alex2', {
   age: 18
 })
 
-console.log(d.toString())
+// console.log(d.toString())

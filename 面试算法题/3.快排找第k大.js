@@ -1,13 +1,11 @@
 /*
  * @Author: chenghaolun
- * @Date: 2021-07-24 16:22:33
+ * @Date: 2021-07-28 08:44:41
  * @LastEditors: chenghaolun
- * @Description: 快速排序
- * @LastEditTime: 2021-08-04 16:32:27
- * @FilePath: \Algorithm-Learning\chapter2-sort\5.quickSort\index.js
+ * @Description: 快排
+ * @LastEditTime: 2021-07-28 08:45:52
+ * @FilePath: \Algorithm-Learning\面试算法题\3.快排找第k大.js
  */
-
-// 跟 `归并排序` 类似，都是采用 分治法，复杂度都为 O(nlogn)
 
 const arr = [3, 1, 3, 5, 6, 4, 45, 4, 67, 100]
 
@@ -29,4 +27,9 @@ function quickSort(arr) {
   return quickSort(left).concat([mid], quickSort(right))
 }
 
-console.log(quickSort(arr))
+function findK(arr, k) {
+  // 逆序
+  const sortedArr = quickSort(arr)
+
+  return sortedArr[k - 1]
+}

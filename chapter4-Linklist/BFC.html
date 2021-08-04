@@ -1,0 +1,60 @@
+<!--
+ * @Author: chenghaolun
+ * @Date: 2021-07-29 11:09:11
+ * @LastEditors: chenghaolun
+ * @Description: bfc
+ * @LastEditTime: 2021-07-29 11:27:26
+ * @FilePath: \Algorithm-Learning\chapter4-Linklist\BFC.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .layout {
+      background-color: #ccc;
+      /* overflow: hidden; */
+    }
+    .aside {
+      width: 100px;
+      background-color: burlywood;
+      float: left;
+      box-shadow: 5px 5px 10px red;
+
+      /* 单个字符超出容器，让字符换行 */
+      /* overflow-wrap: break-word; */
+
+      /* 字符超出容器，用 '-' 连接符连接 */
+      /* hyphens: auto; */
+
+      /* 单行文本超出，省略号 */
+      /* white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; */
+    }
+    .main  {
+      background-color: cadetblue;
+      overflow: auto;
+    }
+    .clearfix {
+      zoom: 1;
+    }
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="aside">WRAP是由四个英文字的缩写结合而来。原文是WORLDWIDE RESPONSIBLE ACCREDITED PRODUCTION,中文译意是「负责任的全球成衣制造」。环球服装生产社会责任原则是参与WRAP认证项目生产设施的核心标准。该项目的是独立监控和证明制造业符合这些全球性的社会责</div>
+    <div class="main">2</div>
+    <div class="clearfix"></div>
+  </div>
+</body>
+</html>

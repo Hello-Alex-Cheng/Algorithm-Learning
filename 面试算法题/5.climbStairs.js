@@ -2,9 +2,9 @@
  * @Author: chenghaolun
  * @Date: 2021-07-28 09:21:38
  * @LastEditors: chenghaolun
- * @Description:
- * @LastEditTime: 2021-07-28 09:23:17
- * @FilePath: \Algorithm-Learning\面试算法题\5.爬楼梯.js
+ * @Description: 爬楼梯
+ * @LastEditTime: 2021-08-05 16:55:32
+ * @FilePath: \Algorithm-Learning\面试算法题\5.climbStairs.js
  */
 
 // 爬楼梯，一次可以爬 1 个阶梯，或者两个阶梯，有几种方式可以爬到楼顶 ?

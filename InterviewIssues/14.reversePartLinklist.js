@@ -3,7 +3,7 @@
  * @Date: 2021-08-07 10:10:14
  * @LastEditors: chenghaolun
  * @Description: 反转部分单向链表
- * @LastEditTime: 2021-08-07 11:06:32
+ * @LastEditTime: 2021-08-11 09:55:18
  * @FilePath: \Algorithm-Learning\InterviewIssues\14.reversePartLinklist.js
  */
 
@@ -56,7 +56,7 @@ function reversePart1(head, left, right) {
 }
 
 
-
+// [1,2,3,4,5,6,7], 2, 6
 
 function reversePart2(head, left, right) {
 
@@ -72,12 +72,13 @@ function reversePart2(head, left, right) {
   // 要反转的链表
   head = pre.next
 
+  // 遍历 2 - 6
   for (let i = left; i < right; i++) {
-    const next = head.next
+    const next = head.next // 3
 
-    head.next = next.next
-    next.next = pre.next
-    pre.next = next
+    head.next = next.next // 2 -> 4
+    next.next = pre.next // 4 -> 2
+    pre.next = next // 1 -> 3 -> 4 -> 2
   }
 
   return dummy.next

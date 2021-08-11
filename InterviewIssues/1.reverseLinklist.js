@@ -3,8 +3,8 @@
  * @Date: 2021-07-28 08:42:04
  * @LastEditors: chenghaolun
  * @Description: 反转链表
- * @LastEditTime: 2021-07-28 08:42:25
- * @FilePath: \Algorithm-Learning\面试算法题\1.反转链表.js
+ * @LastEditTime: 2021-08-11 09:39:41
+ * @FilePath: \Algorithm-Learning\InterviewIssues\1.reverseLinklist.js
  */
 
 // 递归法
@@ -42,3 +42,16 @@ function reverseLink2(head) {
   return newListHead
 }
 
+
+
+function reverse(head) {
+  let pre = null
+  let next = null
+
+  while (!head) {
+    next = head.next
+    head.next = pre
+    pre = head
+    head = next
+  }
+}

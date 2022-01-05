@@ -1,0 +1,63 @@
+<!--
+ * @Author: chenghaolun
+ * @Date: 2021-08-30 11:49:40
+ * @LastEditors: chenghaolun
+ * @Description:
+ * @LastEditTime: 2021-08-30 12:01:56
+ * @FilePath: \Algorithm-Learning\InterviewIssues\drag.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手动实现拖拽</title>
+</head>
+<style>
+  .move {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: gray
+  }
+</style>
+
+<body>
+  <div class="move-container">
+    <div class="move">
+    </div>
+  </div>
+  <script>
+    // 首先获取元素
+    var moveEle = document.querySelector('.move')
+    // 定义拖拽状态
+    var isDragging = false
+
+    // 定义点位信息
+    var pointX, pointY
+
+    // 注册事件
+    moveEle.addEventListener('mousedown', (e) => {
+      var moveRect = moveEle.getBoundingClientRect()
+
+      isDragging = true
+      pointX = e.clientX - moveRect.left
+      pointY = e.clientY - moveRect.top
+    })
+
+    moveEle.addEventListener('mouseup', () => {
+      isDragging = false
+    })
+
+    moveEle.addEventListener('mousemove', e => {
+      if (isDragging) {
+        var movex = e.clientX - pointX
+        var moveY = e.clientY - pointY
+        moveEle.style.left = movex + 'px'
+        moveEle.style.top = moveY + 'px'
+      }
+    })
+  </script>
+</body>
+</html>

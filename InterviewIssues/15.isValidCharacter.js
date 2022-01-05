@@ -3,7 +3,7 @@
  * @Date: 2021-08-07 11:30:22
  * @LastEditors: chenghaolun
  * @Description: 有效的括号
- * @LastEditTime: 2021-08-07 11:30:59
+ * @LastEditTime: 2021-08-30 09:56:08
  * @FilePath: \Algorithm-Learning\InterviewIssues\15.isValidCharacter.js
  */
 
@@ -54,4 +54,44 @@ var isValid = function(s) {
 
   return s === ''
 }
+
+
+// 方法2
+function validateStr(str) {
+
+  // stack
+  const leftStack = []
+
+  for (let i = 0; i < str.length; i++) {
+    // 遇到是 左 括号， 就推入到 栈中
+    if (str[i] === '(' || str[i] === '{' || str[i] === '[') {
+      leftStack.push(str[i])
+    } else {
+      // 否则是 右 括号
+      if (leftStack.length === 0) {
+        return false
+      } else {
+        // 将栈里面的元素弹出
+        const temp = leftStack.pop()
+        if (str[i] === '}') {
+          if (temp !== '{') {
+            return false
+          }
+        } else if (str[i] === ')') {
+          if (temp !== '(') {
+            return false
+          }
+        } else if (str[i] === ']') {
+          if (temp !== '[') {
+            return false
+          }
+        }
+      }
+    }
+  }
+
+  return true
+}
+
+console.log(validateStr('[()]{}'))
 

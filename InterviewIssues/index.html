@@ -1,0 +1,103 @@
+<!--
+ * @Author: chenghaolun
+ * @Date: 2021-08-19 11:11:36
+ * @LastEditors: chenghaolun
+ * @Description: test
+ * @LastEditTime: 2021-08-30 10:22:17
+ * @FilePath: \Algorithm-Learning\InterviewIssues\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .app {
+      width: 400px;
+      height: 400px;
+      background-color: #ccc;
+      /* visibility 占据位置，不可显示，不可触发事件 */
+      /* visibility: hidden; */
+
+      /* opacity: 0; 占据文档流位置，可触发事件 */
+
+      /* 不占据位置 */
+      /* display: none; */
+      /* opacity: 0; */
+    }
+  </style>
+</head>
+<body>
+  <div class="app"></div>
+  <h3>123</h3>
+
+  <script>
+
+    function throttle(fn, interval) {
+
+      // let last = 0
+      // return function(...args) {
+      //   let context = this
+      //   let now = Date.now() // +new Date()
+      //   if (now - last > interval) {
+      //     last = now
+      //     fn.apply(context, args)
+      //   }
+      // }
+
+      let flag = true
+      return function(...args) {
+        let context = this
+        if (!flag) return
+
+        // 在 interval 时间内，flag 一直是 false
+        // 直到 timeout 执行之后，flag 变为 true
+        flag = false
+
+        setTimeout(() => {
+          fn.apply(context, args)
+          flag = true
+        }, interval)
+      }
+    }
+
+    function debounce(func, wait, immediate) {
+      let timeout
+
+      return function() {
+        const context = this
+        const args = arguments
+        if (timeout) {
+          clearTimeout(timeout)
+        }
+
+        // 是否立即执行一次
+        if (immediate) {
+          immediate = !immediate
+          func.apply(context, args)
+        }
+
+        // 停止触发事件后，再执行一次
+        timeout = setTimeout(() => {
+          immediate = !immediate
+          func.apply(context, args)
+        }, wait);
+      }
+    }
+
+    window.onload = function() {
+      const app = document.querySelector('.app')
+
+      app.textContent = 0
+
+      function log(e) {
+        e.target.textContent = +e.target.textContent + 1
+      }
+
+      app.addEventListener('mousemove', debounce(log, 1000, false), false)
+    }
+  </script>
+</body>
+</html>

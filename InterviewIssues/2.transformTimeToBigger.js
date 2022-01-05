@@ -3,8 +3,8 @@
  * @Date: 2021-07-28 08:43:16
  * @LastEditors: chenghaolun
  * @Description: 将带问号的时间转成最大时间
- * @LastEditTime: 2021-07-28 09:20:20
- * @FilePath: \Algorithm-Learning\面试算法题\2.转最大小时和分钟.js
+ * @LastEditTime: 2021-08-29 15:49:19
+ * @FilePath: \Algorithm-Learning\InterviewIssues\2.transformTimeToBigger.js
  */
 
 // ??:??
@@ -20,6 +20,7 @@ const transformTime = time => {
           if (time[i + 1] === '?') {
             showTime += '23'
           } else {
+            // 第二个字符不是 ?，记得要把 time[i + 1] 拼接到 showTime 后面
             if (+time[i + 1] <= 3) {
               showTime += '2' + time[i + 1]
             } else {

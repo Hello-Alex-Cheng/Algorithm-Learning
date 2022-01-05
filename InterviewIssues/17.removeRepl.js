@@ -3,7 +3,7 @@
  * @Date: 2021-08-11 10:33:13
  * @LastEditors: chenghaolun
  * @Description: 删除无序单链表中值重复出现的节点
- * @LastEditTime: 2021-08-11 11:02:12
+ * @LastEditTime: 2021-08-29 16:19:27
  * @FilePath: \Algorithm-Learning\InterviewIssues\17.removeRepl.js
  */
 
@@ -30,6 +30,7 @@ function removeRepl(head) {
 
   console.log(JSON.stringify(head, null, 2))
 }
+
 
 const link = {
   val: 1,

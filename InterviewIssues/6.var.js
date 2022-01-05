@@ -3,8 +3,8 @@
  * @Date: 2021-07-28 09:23:54
  * @LastEditors: chenghaolun
  * @Description: 这??
- * @LastEditTime: 2021-07-28 09:31:39
- * @FilePath: \Algorithm-Learning\面试算法题\6.考察var.js
+ * @LastEditTime: 2021-08-29 16:01:36
+ * @FilePath: \Algorithm-Learning\InterviewIssues\6.var.js
  */
 
 var x = 1, y = 0, z = 0
@@ -27,3 +27,4 @@ function add(x) {
 z = add(x)
 
 console.log(x, y, z)
+

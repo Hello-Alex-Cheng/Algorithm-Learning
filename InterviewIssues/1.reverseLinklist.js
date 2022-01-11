@@ -7,6 +7,7 @@
  * @FilePath: \Algorithm-Learning\InterviewIssues\1.reverseLinklist.js
  */
 
+
 // [1, 2, 3, 4, 5]
 // 递归法
 function reverseLink1(head) {
@@ -20,6 +21,15 @@ function reverseLink1(head) {
 
   return newListHead
 }
+
+
+// 迭代法
+// 1. 定义一个头节点 prev = null
+// 2. 以及 curr = head
+// 在 while(curr) 中，首先要保存 curr 的下一个节点 const next = curr.next
+// 然后让当前的 curr.next 指向 prev
+// curr.next => null
+// 然后让 prev = curr
 
 
 // 迭代法
@@ -46,14 +56,39 @@ function reverseLink2(head) {
 
 
 
-function reverse(head) {
-  let pre = null
-  let next = null
 
-  while (!head) {
-    next = head.next
-    head.next = pre
-    pre = head
-    head = next
+function reverseLinklist(head) {
+  if (!head || !head.next) return head;
+
+  let curr = head;
+  let prev = null;
+
+  while(curr) {
+    // 保存当前节点的下一个节点 next
+    const next = curr.next;
+
+    // 第一个节点，就反转了
+    curr.next = prev;
+
+    prev = curr;
+
+    curr = next;
   }
+
+  return prev;
 }
+
+
+console.log(reverseLinklist({
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+}), null, 2)
